@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from "svelte"
 	import { sleep } from "../lib"
+	let { canContinue = $bindable(), interacted } = $props()
 
 	// 1. build the text "welcome home..." from left to right
 	// 2. delete it from outward to center
@@ -23,14 +24,20 @@
 			await sleep((3 / textSteps.length) * 1000) // 3s for the whole sequence
 		}
 
+		// step 3 & 4 is done inline
 		currentText = "click to continue..."
+
+		// ready for interaction, step 5
+		canContinue = true
 	})
 </script>
 
 <span
-	class="absolute left-1/2 top-[90%] -translate-x-1/2 -translate-y-1/2 text-white font-['Courier_New'] text-nowrap {currentText === 'click to continue...'
-		? 'animate-[appear_1s_infinite_alternate]'
-		: ''}"
+	class="absolute left-1/2 top-[90%] -translate-x-1/2 -translate-y-1/2 text-white font-['Courier_New'] text-nowrap {interacted
+		? 'animate-[appear_0.05s_infinite_alternate]'
+		: currentText === 'click to continue...'
+			? 'animate-[appear_1s_infinite_alternate]'
+			: ''}"
 >
 	{currentText}
 </span>

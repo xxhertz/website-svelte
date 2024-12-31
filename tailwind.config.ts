@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss'
+import plugin from 'tailwindcss'
 
 export default {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
@@ -13,7 +14,10 @@ export default {
 					"100%": {
 						opacity: "1"
 					}
-				}
+				},
+			},
+			animation: {
+				disappearingblink: "0.05s infinite alternate backwards appear"
 			}
 		}
 	},
