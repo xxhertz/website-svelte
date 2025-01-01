@@ -2,6 +2,8 @@
 	import Backdrop from "../components/Backdrop.svelte"
 	import Welcome from "../components/Welcome.svelte"
 	import WelcomeHome from "../components/WelcomeHome.svelte"
+	import { disappear } from "../lib"
+
 
 	let canContinue = $state(false)
 	let interacted = $state(false)
@@ -14,11 +16,11 @@
 
 	$effect(() => {
 		async function resume() {
-			await backgroundMusic?.play()
 			document.body.onclick = null
 			document.body.onkeydown = null
-
 			interacted = true
+
+			await backgroundMusic?.play()
 		}
 
 		if (backgroundMusic && canContinue) {
@@ -32,10 +34,9 @@
 <Backdrop>
 	{#if !interacted}
 		<Welcome>
-			<span class="text-7xl text-white font-sans h-24 leading-snug {interacted ? 'transition-opacity duration-500 ease-in-out opacity-0' : ''}">fini</span
-			>
+			<span out:disappear class="text-7xl text-white font-sans h-24 leading-snug">fini</span>
 
-			<WelcomeHome bind:canContinue {interacted} />
+			<WelcomeHome bind:canContinue />
 		</Welcome>
 	{/if}
 </Backdrop>
