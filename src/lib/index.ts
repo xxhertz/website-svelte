@@ -23,7 +23,7 @@ export function disappear(node: HTMLElement) {
 	}
 }
 
-export function blink(node: HTMLElement, params: { dont_animate?: boolean }) {
+export function blink(node: HTMLElement, params?: { dont_animate?: boolean }) {
 	return {
 		delay: 0,
 		duration: 500,
