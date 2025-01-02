@@ -9,6 +9,7 @@
 
 	let canContinue = $state(false)
 	let interacted = $state(false)
+	let viewProjects = $state(false)
 
 	let backgroundMusic = $state<HTMLAudioElement>()
 	let musicState = $state({
@@ -41,11 +42,21 @@
 			<WelcomeHome bind:canContinue />
 		</Welcome>
 	{:else}
-		<Socials>
-			<Button onclick={() => window.open("https://github.com/xxhertz")}>github</Button>
-			<Button onclick={() => window.open("https://youtube.com/c/hzjumps")}>youtube</Button>
-			<Button onclick={() => window.open("https://discord.gg/pNrZeWcbap")}>discord</Button>
-			<Button onclick={() => window.open("https://twitch.tv/hzjumps")}>twitch</Button>
-		</Socials>
+		{#if !viewProjects}
+			<Socials>
+				<Button onclick={() => window.open("https://github.com/xxhertz")}>github</Button>
+				<Button onclick={() => window.open("https://youtube.com/c/hzjumps")}>youtube</Button>
+				<Button onclick={() => window.open("https://discord.gg/pNrZeWcbap")}>discord</Button>
+				<Button onclick={() => window.open("https://twitch.tv/hzjumps")}>twitch</Button>
+				<Button animate={false} onclick={() => (viewProjects = true)}>projects</Button>
+			</Socials>
+		{:else}
+			<Socials>
+				<Button onclick={() => window.open("https://github.com/CMD-X/CMD-X/")}>cmd-x</Button>
+				<Button onclick={() => window.open("https://github.com/xxhertz/imagek_bot")}>imagek</Button>
+				<Button onclick={() => window.open("https://github.com/xxhertz/website-svelte")}>this site</Button>
+				<Button animate={false} onclick={() => (viewProjects = false)}>go back</Button>
+			</Socials>
+		{/if}
 	{/if}
 </Backdrop>

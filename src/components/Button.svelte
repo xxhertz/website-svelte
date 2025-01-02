@@ -1,12 +1,14 @@
 <script lang="ts">
 	import type { Snippet } from "svelte"
 	import type { MouseEventHandler } from "svelte/elements"
-	let { children, onclick }: { children: Snippet; onclick: MouseEventHandler<HTMLButtonElement> } = $props()
+	import { blink } from "../lib"
+	let { animate = true, children, onclick }: { animate?: boolean; children: Snippet; onclick: MouseEventHandler<HTMLButtonElement> } = $props()
 </script>
 
 <button
 	class="hover:bg-[#22222240] hover:border-b-[#fedfff] text-white border-b-[1px] border-solid border-[#fb88ff] p-[30px] font-[Verdana] no-underline transition-colors duration-500 w-52"
 	{onclick}
+	out:blink={{ dont_animate: animate }}
 >
 	{@render children?.()}
 </button>

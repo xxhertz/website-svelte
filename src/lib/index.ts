@@ -20,18 +20,17 @@ export function disappear(node: HTMLElement) {
 		duration: 500,
 		easing: cubicInOut,
 		css: (t: number) => `opacity: ${t}`
-
 	}
 }
 
-export function blink(node: HTMLElement) {
+export function blink(node: HTMLElement, params: { dont_animate?: boolean }) {
 	return {
 		delay: 0,
 		duration: 500,
 		easing: linear,
 		css: (t: number) => {
 			const blinkState = Math.sin(t * 40) // seems like a good balance
-			return `opacity: ${blinkState}; animate: unset`
+			return params?.dont_animate ? "" : `opacity: ${blinkState}; animate: unset`
 		}
 	}
 }
@@ -43,6 +42,5 @@ export function deblink(node: HTMLElement, params: { delay: number, duration: nu
 		duration: params.duration,
 		easing: cubicInOut,
 		css: (t: number, u: number) => `transform: ${existingTransform} scale(1, ${t}); opacity: ${t}`
-		// css: (t: number) => `scale: 1 ${t}; opacity: ${t}`
 	}
 }
