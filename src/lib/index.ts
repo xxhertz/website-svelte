@@ -1,6 +1,6 @@
 // place files you want to import through the `$lib` alias in this folder.
 
-import { linear, sineInOut } from 'svelte/easing'
+import { cubicInOut, linear } from 'svelte/easing'
 export const sleep = (ms: number) => new Promise(r => setTimeout(r, ms))
 
 export function explode(node: HTMLElement) {
@@ -9,7 +9,7 @@ export function explode(node: HTMLElement) {
 	return {
 		delay: 500,
 		duration: 100,
-		easing: sineInOut,
+		easing: cubicInOut,
 		css: (t: number, u: number) => `transform: ${existingTransform} scale(${1 + u * 5}, ${t}); opacity: ${t}`
 	}
 }
@@ -20,7 +20,7 @@ export function dexplode(node: HTMLElement) {
 	return {
 		delay: 0,
 		duration: 100,
-		easing: sineInOut,
+		easing: cubicInOut,
 		css: (t: number, u: number) => `transform: ${existingTransform} scale(1, ${t}); opacity: ${t}`
 	}
 }
@@ -29,7 +29,7 @@ export function disappear(node: HTMLElement) {
 	return {
 		delay: 0,
 		duration: 500,
-		easing: sineInOut,
+		easing: cubicInOut,
 		css: (t: number) => `opacity: ${t}`
 
 	}
