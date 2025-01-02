@@ -14,17 +14,6 @@ export function explode(node: HTMLElement) {
 	}
 }
 
-export function dexplode(node: HTMLElement) {
-	const existingTransform = getComputedStyle(node).transform.replace('none', '')
-
-	return {
-		delay: 0,
-		duration: 100,
-		easing: cubicInOut,
-		css: (t: number, u: number) => `transform: ${existingTransform} scale(1, ${t}); opacity: ${t}`
-	}
-}
-
 export function disappear(node: HTMLElement) {
 	return {
 		delay: 0,
@@ -44,5 +33,16 @@ export function blink(node: HTMLElement) {
 			const blinkState = Math.sin(t * 40) // seems like a good balance
 			return `opacity: ${blinkState}; animate: unset`
 		}
+	}
+}
+
+export function deblink(node: HTMLElement, params: { delay: number, duration: number }) {
+	const existingTransform = getComputedStyle(node).transform.replace('none', '')
+	return {
+		delay: params.delay,
+		duration: params.duration,
+		easing: cubicInOut,
+		css: (t: number, u: number) => `transform: ${existingTransform} scale(1, ${t}); opacity: ${t}`
+		// css: (t: number) => `scale: 1 ${t}; opacity: ${t}`
 	}
 }

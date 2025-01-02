@@ -1,5 +1,7 @@
 <script lang="ts">
 	import Backdrop from "../components/Backdrop.svelte"
+	import Button from "../components/Button.svelte"
+	import Socials from "../components/Socials.svelte"
 	import Welcome from "../components/Welcome.svelte"
 	import WelcomeHome from "../components/WelcomeHome.svelte"
 	import { disappear } from "../lib"
@@ -38,5 +40,12 @@
 
 			<WelcomeHome bind:canContinue />
 		</Welcome>
+	{:else}
+		<Socials>
+			<Button onclick={() => window.open("https://github.com/xxhertz")}>github</Button>
+			<Button onclick={() => window.open("https://youtube.com/c/hzjumps")}>youtube</Button>
+			<Button onclick={() => window.open("https://discord.gg/pNrZeWcbap")}>discord</Button>
+			<Button onclick={() => window.open("https://twitch.tv/hzjumps")}>twitch</Button>
+		</Socials>
 	{/if}
 </Backdrop>
