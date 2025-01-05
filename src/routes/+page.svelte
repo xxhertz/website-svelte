@@ -2,6 +2,7 @@
 	import Backdrop from "../components/Backdrop.svelte"
 	import BirthdayClock from "../components/BirthdayClock.svelte"
 	import Button from "../components/Button.svelte"
+	import Pause from "../components/Pause.svelte"
 	import Socials from "../components/Socials.svelte"
 	import Welcome from "../components/Welcome.svelte"
 	import WelcomeHome from "../components/WelcomeHome.svelte"
@@ -59,5 +60,6 @@
 			</Socials>
 		{/if}
 		<BirthdayClock />
+		<Pause ref={backgroundMusic} />
 	{/if}
 </Backdrop>
