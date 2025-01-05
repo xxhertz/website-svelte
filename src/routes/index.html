@@ -1,99 +1,14 @@
 <script>
 	function loaded() {
-		const main = document.getElementById("main")
-		const submain = document.getElementById("submain")
-		const fini = document.getElementById("fini")
-		const subtext = document.getElementById("subtext")
-		const audio = document.getElementById("audio")
-		const volume = document.getElementById("volume")
-		const pause = document.getElementById("pause")
-		const countdown = document.getElementById("countdown")
 		const darkreaderwarning = document.getElementById("darkreaderwarning")
-		pause.onclick = () => {
-			if (audio.paused) {
-				audio.play()
-				pause.innerHTML = "PLAYING"
-			} else {
-				audio.pause()
-				pause.innerHTML = "PAUSED"
-			}
-		}
-		volume.onmousemove = () => (audio.volume = volume.value / 100)
-		audio.ontimeupdate = () => (audio.volume = volume.value / 100)
-		window.onfocus = () => (document.title = "fini's home")
-		window.onblur = () => (document.title = "\u200E")
-		volume.value = 10
-		audio.volume = volume.value / 100
-		main.style.opacity = 1
-		const text = "welcome home..."
-
-
-
-		function create_button(fn, text) {
-			const button = document.createElement("button")
-			button.className = "button"
-			button.onclick = fn
-			button.innerHTML = text
-			submain.appendChild(button)
-			return button
-		}
-
-		function projects(...buttons) {
-			const cmd_x = create_button(
-				() => window.open("https://github.com/CMD-X/CMD-X/"),
-				"cmd-x"
-			)
-			const imagek = create_button(
-				() => window.open("https://github.com/xxhertz/imagek_bot"),
-				"imagek"
-			)
-			const rankup_bot = create_button(
-				() => window.open("https://discord.gg/pNrZeWcbap"),
-				"rankup bot"
-			)
-			// if you're snooping, infinite is abandoned, the invite still works but you'll be disappointed <3
-			// const infinite = create_button(() => window.open("https://discord.gg/dzp26MtrM3"), "infinite")
-			const go_back = create_button(() => {
-				button_animation(go_back, () => {
-					for (let i = 0; i < buttons.length; i++) buttons[i].style.display = "unset"
-
-					cmd_x.remove()
-					imagek.remove()
-					// infinite.remove()
-					rankup_bot.remove()
-					go_back.remove()
-				})
-			}, "go back")
-
-			for (let i = 0; i < buttons.length; i++) buttons[i].style.display = "none"
-		}
-
-
-
 	}
 </script>
 
-<head>
-	<title>fini's home</title>
-	<meta charset="us-ascii" />
-	<link rel="preconnect" href="https://fonts.googleapis.com" />
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-	<link
-		href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap"
-		rel="stylesheet"
-	/>
-	<link
-		href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
-		rel="stylesheet"
-	/>
-</head>
 <body
-	onload="loaded()"
 	oncontextmenu="return false"
 	onkeyup="return false"
 	onkeydown="return false"
 >
-	<audio id="audio" src="audio.mp3"></audio>
 	<div id="main">
 		<div id="darkreaderwarning">
 			<span>
@@ -101,78 +16,10 @@
 				strain your eyes, please disable it &lt;3
 			</span>
 		</div>
-		<input id="volume" type="range" name="" step="0.01" min="0" max="100" />
-		<button id="pause">PLAYING</button>
-		<div id="submain">
-			<span id="fini">fini</span>
-			<span id="subtext"></span>
-		</div>
-		<span id="countdown"></span>
 	</div>
 </body>
 
 <style>
-
-	#pause {
-		opacity: 0;
-		background: #0000;
-		transition:
-			border 0.15s linear,
-			opacity 0.1s ease,
-			background 0.1s ease-in-out;
-		border: 0;
-		position: fixed;
-		bottom: 5px;
-		display: flex;
-		font-family: "Press Start 2P", cursive;
-		color: white;
-		left: 50%;
-		text-align: center;
-		transform-origin: 50%;
-		transform: translate(-50%, -50%);
-		-webkit-box-orient: vertical;
-		-webkit-box-direction: normal;
-		flex-direction: column;
-		justify-content: space-around;
-		-webkit-box-sizing: border-box;
-		box-sizing: border-box;
-		height: 1.5rem;
-		cursor:
-			url(cursor.png) 16 16,
-			auto !important;
-	}
-
-	#volume {
-		position: fixed;
-		bottom: 50px;
-		left: 50%;
-		transform-origin: 50%;
-		transform: translate(-50%, -50%);
-		width: 500px;
-		height: 3px;
-		background: #fff;
-		opacity: 0;
-		transition: opacity 0.3s ease-in-out;
-	}
-
-
-
-	#volume::-webkit-slider-thumb {
-		box-shadow: 0 0 5px #fff;
-		border-radius: 50%;
-		cursor:
-			url(cursor.png) 16 16,
-			auto !important;
-	}
-
-	#volume::-moz-range-thumb {
-		box-shadow: 0 0 5px #fff;
-		border-radius: 50%;
-		cursor:
-			url(cursor.png) 16 16,
-			auto !important;
-	}
-
 	#darkreaderwarning {
 		border-radius: 5px;
 		height: 64px;

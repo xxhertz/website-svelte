@@ -4,6 +4,7 @@
 	import Button from "../components/Button.svelte"
 	import Pause from "../components/Pause.svelte"
 	import Socials from "../components/Socials.svelte"
+	import Volume from "../components/Volume.svelte"
 	import Welcome from "../components/Welcome.svelte"
 	import WelcomeHome from "../components/WelcomeHome.svelte"
 	import { disappear } from "../lib"
@@ -14,7 +15,7 @@
 
 	let backgroundMusic = $state<HTMLAudioElement>()
 	let musicState = $state({
-		volume: 0.2,
+		volume: 0.1,
 		paused: false,
 	})
 
@@ -33,6 +34,8 @@
 		}
 	})
 </script>
+
+<svelte:window onfocus={() => (document.title = "fini's home")} onblur={() => (document.title = "\u200E")} />
 
 <audio bind:this={backgroundMusic} bind:paused={musicState.paused} bind:volume={musicState.volume} src="/audio.mp3"></audio>
 <Backdrop>
@@ -60,6 +63,7 @@
 			</Socials>
 		{/if}
 		<BirthdayClock />
-		<Pause ref={backgroundMusic} />
+		<Volume bind:musicState />
+		<Pause ref={backgroundMusic} bind:musicState />
 	{/if}
 </Backdrop>
