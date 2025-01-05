@@ -1,8 +1,11 @@
 <script lang="ts">
+	import { disappear } from "../lib"
+
 	let { musicState = $bindable() }: { musicState: { volume: number; paused: boolean } } = $props()
 </script>
 
 <input
+	in:disappear|global={{ goal: 0.5 }}
 	onmousemove={(v) => (musicState.volume = Number(v.currentTarget.value) / 100)}
 	onchange={(v) => (musicState.volume = Number(v.currentTarget.value) / 100)}
 	type="range"
