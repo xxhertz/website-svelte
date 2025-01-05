@@ -27,32 +27,7 @@
 		main.style.opacity = 1
 		const text = "welcome home..."
 
-		function sleep(ms) {
-			return new Promise(resolve => setTimeout(resolve, ms))
-		}
 
-		async function button_animation(btn, fn) {
-			btn.disabled = true
-			btn.style.animation = "0.05s infinite alternate backwards blink"
-
-			await sleep(500)
-			submain.style.transition = "transform .1s ease-in-out, opacity .1s ease-in-out"
-			submain.style.transform = "translate(-50%, -50%) scale(5, 0)"
-			submain.style.opacity = "0"
-			await sleep(100)
-			submain.style.transition = "transform 0s ease-in-out, opacity .5s ease-in-out"
-			submain.style.transform = "translate(-50%, -50%) scale(1, 0)"
-			await sleep(100)
-			submain.style.transition = "transform .5s ease-in-out, opacity .5s ease-in-out"
-			submain.style.boxShadow = "unset"
-			submain.style.transform = "translate(-50%, -50%) scale(1, 1)"
-			submain.style.opacity = "1"
-
-			fn()
-
-			btn.disabled = false
-			btn.style.animation = ""
-		}
 
 		function create_button(fn, text) {
 			const button = document.createElement("button")
@@ -121,10 +96,10 @@
 	<audio id="audio" src="audio.mp3"></audio>
 	<div id="main">
 		<div id="darkreaderwarning">
-			<span
-				>my website is meant to be viewed without darkreader, there is nothing which will
-				strain your eyes, please disable it &lt;3</span
-			>
+			<span>
+				my website is meant to be viewed without darkreader, there is nothing which will
+				strain your eyes, please disable it &lt;3
+			</span>
 		</div>
 		<input id="volume" type="range" name="" step="0.01" min="0" max="100" />
 		<button id="pause">PLAYING</button>
@@ -178,26 +153,9 @@
 		background: #fff;
 		opacity: 0;
 		transition: opacity 0.3s ease-in-out;
-		cursor:
-			url(cursor.png) 16 16,
-			auto !important;
 	}
 
-	#countdown {
-		position: fixed;
-		bottom: 100px;
-		left: 50%;
-		transform-origin: 50%;
-		transform: translate(-50%, -50%);
-		opacity: 0;
-		font-size: 2rem;
-		transition: opacity 1s ease-in-out;
-		cursor:
-			url(cursor.png) 16 16,
-			auto !important;
-		color: white;
-		font-family: "Open Sans", sans-serif;
-	}
+
 
 	#volume::-webkit-slider-thumb {
 		box-shadow: 0 0 5px #fff;
@@ -238,30 +196,5 @@
 		position: fixed;
 		margin: auto;
 		text-align: center;
-	}
-
-	.button {
-		color: #eee;
-		background: #1113;
-		border: 0 solid #0000;
-		padding: 30px;
-		font-family: Verdana;
-		font-size: 16px;
-		text-decoration: none;
-		text-shadow:
-			0 0 5px rgb(251, 136, 255),
-			0 0 5px rgb(251, 136, 255);
-		border-bottom: solid 1px rgb(251, 136, 255);
-		transition-property: opacity, border-bottom, background;
-		transition-duration: 0.5s;
-		width: 200px;
-		cursor:
-			url(cursor.png) 16 16,
-			auto !important;
-	}
-
-	.button:hover {
-		background: rgba(34, 34, 34, 0.25);
-		border-bottom: solid 1px rgb(254, 223, 255);
 	}
 </style>

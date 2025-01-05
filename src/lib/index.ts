@@ -14,12 +14,12 @@ export function explode(node: HTMLElement) {
 	}
 }
 
-export function disappear(node: HTMLElement) {
+export function disappear(node: HTMLElement, params?: { duration_override?: number, goal?: number }) {
 	return {
 		delay: 0,
-		duration: 500,
+		duration: params?.duration_override || 500,
 		easing: cubicInOut,
-		css: (t: number) => `opacity: ${t}`
+		css: (t: number) => `opacity: ${params?.goal ? params?.goal * t : t}`
 	}
 }
 

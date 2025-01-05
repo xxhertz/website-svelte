@@ -1,11 +1,11 @@
 <script lang="ts">
 	import Backdrop from "../components/Backdrop.svelte"
+	import BirthdayClock from "../components/BirthdayClock.svelte"
 	import Button from "../components/Button.svelte"
 	import Socials from "../components/Socials.svelte"
 	import Welcome from "../components/Welcome.svelte"
 	import WelcomeHome from "../components/WelcomeHome.svelte"
 	import { disappear } from "../lib"
-
 
 	let canContinue = $state(false)
 	let interacted = $state(false)
@@ -58,5 +58,6 @@
 				<Button animate={true} onclick={() => (viewProjects = false)}>go back</Button>
 			</Socials>
 		{/if}
+		<BirthdayClock />
 	{/if}
 </Backdrop>
