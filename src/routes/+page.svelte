@@ -25,6 +25,8 @@
 			document.body.onkeydown = null
 			interacted = true
 
+			// 5% odds
+			if (Math.random() > 0.95 && backgroundMusic) backgroundMusic.src = "mrkillmyself.mp3"
 			await backgroundMusic?.play()
 		}
 
@@ -37,7 +39,7 @@
 
 <svelte:window onfocus={() => (document.title = "fini's home")} onblur={() => (document.title = "\u200E")} />
 
-<audio bind:this={backgroundMusic} bind:paused={musicState.paused} bind:volume={musicState.volume} src="/audio.mp3"></audio>
+<audio bind:this={backgroundMusic} bind:paused={musicState.paused} bind:volume={musicState.volume} src="autumnrust.mp3"></audio>
 <Backdrop>
 	{#if !interacted}
 		<Welcome>
