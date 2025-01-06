@@ -2,6 +2,7 @@
 	import Backdrop from "../components/Backdrop.svelte"
 	import BirthdayClock from "../components/BirthdayClock.svelte"
 	import Button from "../components/Button.svelte"
+	import DarkReaderWarning from "../components/DarkReaderWarning.svelte"
 	import Pause from "../components/Pause.svelte"
 	import Socials from "../components/Socials.svelte"
 	import Volume from "../components/Volume.svelte"
@@ -38,9 +39,11 @@
 </script>
 
 <svelte:window onfocus={() => (document.title = "fini's home")} onblur={() => (document.title = "\u200E")} />
+<svelte:body oncontextmenu={(e) => e.preventDefault()} onkeyup={(e) => e.preventDefault()} onkeydown={(e) => e.preventDefault()} />
 
 <audio bind:this={backgroundMusic} bind:paused={musicState.paused} bind:volume={musicState.volume} src="autumnrust.mp3"></audio>
 <Backdrop>
+	<DarkReaderWarning />
 	{#if !interacted}
 		<Welcome>
 			<span out:disappear class="text-7xl text-white font-sans h-24 leading-snug">fini</span>
