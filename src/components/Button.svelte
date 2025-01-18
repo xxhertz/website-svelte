@@ -6,7 +6,7 @@
 </script>
 
 <button
-	class="hover:bg-[#22222240] bg-[#1113] hover:border-b-[#fedfff] text-white border-b-[1px] border-solid border-[#fb88ff] p-[30px] font-[Verdana] no-underline transition-colors duration-500 w-52"
+	class="hover:bg-[#22222240] bg-[#1113] hover:border-b-[#fedfff] text-white border-b border-solid border-[#fb88ff] p-[30px] font-[Verdana] no-underline transition-colors duration-500 w-52"
 	{onclick}
 	out:blink={{ dont_animate: !animate }}
 >
