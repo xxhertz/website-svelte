@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { deblink, explode } from "../lib"
+	import { deblink, explode } from "$lib"
 
 	let { children } = $props()
 </script>

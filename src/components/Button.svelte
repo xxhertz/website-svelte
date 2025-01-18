@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { Snippet } from "svelte"
 	import type { MouseEventHandler } from "svelte/elements"
-	import { blink } from "../lib"
+	import { blink } from "$lib"
 	let { animate = false, children, onclick }: { animate?: boolean; children: Snippet; onclick: MouseEventHandler<HTMLButtonElement> } = $props()
 </script>
 

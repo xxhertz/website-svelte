@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from "svelte"
-	import { blink, sleep } from "../lib"
+	import { blink, sleep } from "$lib"
 	let { canContinue = $bindable(false) } = $props()
 
 	// 1. build the text "welcome home..." from left to right

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from "svelte"
-	import { disappear } from "../lib"
+	import { disappear } from "$lib"
 
 	// spent like 2 days looking through js Date class documentation and couldn't find a proper timezone-oriented solution (seriously though.. why was this so difficult)
 	// i want the timer to represent EST regardless of the viewers timezone

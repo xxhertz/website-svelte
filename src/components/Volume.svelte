@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { disappear } from "../lib"
+	import { disappear } from "$lib"
 
 	let { musicState = $bindable() }: { musicState: { volume: number; paused: boolean } } = $props()
 </script>
