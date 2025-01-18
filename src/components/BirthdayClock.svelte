@@ -44,8 +44,7 @@
 				duration = `${pad(months)}:${pad(days)}:${pad(hours)}:${pad(minutes)}:${pad(seconds)}`
 
 				return invoke
-			})(),
-			1000,
+			})(), 1000
 		)
 
 		return () => clearInterval(interval)

@@ -8,7 +8,7 @@
 	import Volume from "../components/Volume.svelte"
 	import Welcome from "../components/Welcome.svelte"
 	import WelcomeHome from "../components/WelcomeHome.svelte"
-	import { disappear } from "../lib"
+	import { disappear, projects } from "$lib"
 
 	let canContinue = $state(false)
 	let interacted = $state(false)
@@ -39,12 +39,12 @@
 </script>
 
 <svelte:window onfocus={() => (document.title = "fini's home")} onblur={() => (document.title = "\u200E")} />
-<svelte:body oncontextmenu={(e) => e.preventDefault()} onkeyup={(e) => e.preventDefault()} onkeydown={(e) => e.preventDefault()} />
+<!-- <svelte:body oncontextmenu={(e) => e.preventDefault()} onkeyup={(e) => e.preventDefault()} onkeydown={(e) => e.preventDefault()} /> -->
 
 <audio bind:this={backgroundMusic} bind:paused={musicState.paused} bind:volume={musicState.volume} src="autumnrust.mp3"></audio>
 <Backdrop>
 	<DarkReaderWarning />
-	{#if !interacted}
+	<!-- {#if !interacted}
 		<Welcome>
 			<span out:disappear class="text-7xl text-white font-sans h-24 leading-snug">fini</span>
 
@@ -70,5 +70,6 @@
 		<BirthdayClock />
 		<Volume bind:musicState />
 		<Pause ref={backgroundMusic} bind:musicState />
-	{/if}
+	{/if} -->
+	<ViewProject project={projects["CMD-X"]} />
 </Backdrop>
