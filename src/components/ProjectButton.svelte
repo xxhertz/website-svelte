@@ -14,7 +14,7 @@
 	out:blink|global={{ dont_animate: !mouseOver }}
 	in:deblink|global={{ delay: 700, duration: 500 }}
 	onclick={() => (currentlyViewing = project)}
-	class="px-1 border-b border-[#fb88ff] text-white text-center h-12 hover:bg-[#22222240] bg-[#1113] hover:border-b-[#fedfff] transition-colors duration-500 backdrop-blur-[1px]"
+	class="px-4 border-b border-[#fb88ff] text-white text-center h-12 hover:bg-[#22222240] bg-[#1113] hover:border-b-[#fedfff] transition-colors duration-500 backdrop-blur-[1px]"
 >
 	{project.name}
 </button>
