@@ -23,3 +23,11 @@
 		onclick={() => (viewProjects = false)}>back</button
 	>
 </div>
+
+<style>
+	button {
+		text-shadow:
+			0 0 5px #fb88ff,
+			0 0 5px #fb88ff;
+	}
+</style>

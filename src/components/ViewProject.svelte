@@ -7,7 +7,7 @@
 <div
 	out:explode|global
 	in:deblink|global={{ delay: 700, duration: 500 }}
-	class="relative p-12 bg-black/50 backdrop-blur-[1px] min-w-96 max-w-[50%] -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2 border-b"
+	class="relative p-12 border-[#fb88ff] bg-black/50 backdrop-blur-[1px] min-w-96 max-w-[50%] -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2 border-b"
 >
 	<div class="grid grid-cols-2 pb-4">
 		<h1 class="text-white text-left">{currentlyViewing.name}</h1>
