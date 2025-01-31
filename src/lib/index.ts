@@ -101,5 +101,26 @@ export const projects = {
 		name: "League Settings Freezer",
 		description: "A lot of League of Legends players, especially those in higher ranks or those who play on multiple servers, have multiple accounts. League stores your settings on the cloud, so whenever you change accounts, you have to fix your settings and make all of your adjustments every time you switch. This program freezes your settings whenever you're not in-game and unfreezes them when you are, allowing you to change your settings and have them be reflected on all accounts.",
 		links: { generic: "https://github.com/xxhertz/league-sound-browser" }
-	}
+	},
+
+	"zig-gmod-internal": {
+		name: "zig-gmod-internal",
+		description: "An internal bunnyhop cheat written in Zig for x86_64 Garry's Mod. No protections against anticheats, use at your own risk!",
+		links: { generic: "https://github.com/xxhertz/zig-gmod-internal" }
+	},
+	"zig-css-internal": {
+		name: "zig-css-internal",
+		description: "An internal bunnyhop cheat written in Zig for Counter-Strike: Source. No protections against anticheats, use at your own risk!",
+		links: { generic: "https://github.com/xxhertz/zig-css-internal" }
+	},
+	"zig-trampoline-hook": {
+		name: "zig-trampoline-hook",
+		description: "Basic x86 trampoline hook implemented in Zig. Windows only.",
+		links: { generic: "https://github.com/xxhertz/zig-trampoline-hook" }
+	},
+	"zig-vmt-hook": {
+		name: "zig-vmt-hook",
+		description: "A VMT hook implementation in Zig. Works on x64 and x86 architectures. Windows only.",
+		links: { generic: "https://github.com/xxhertz/zig-vmt-hook" }
+	},
 } as const satisfies Record<string, ProjectData>
