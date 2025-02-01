@@ -8,11 +8,17 @@
 	import Volume from "../components/Volume.svelte"
 	import Welcome from "../components/Welcome.svelte"
 	import WelcomeHome from "../components/WelcomeHome.svelte"
-	import { disappear } from "../lib"
+	import { disappear, projects } from "$lib"
+	import Projects from "../components/Projects.svelte"
+	import ViewProject from "../components/ViewProject.svelte"
+	import ProjectButton from "../components/ProjectButton.svelte"
 
 	let canContinue = $state(false)
 	let interacted = $state(false)
-	let viewProjects = $state(false)
+	let projectState = $state({
+		currentlyViewing: undefined,
+		viewProjects: false,
+	})
 
 	let backgroundMusic = $state<HTMLAudioElement>()
 	let musicState = $state({
@@ -39,7 +45,7 @@
 </script>
 
 <svelte:window onfocus={() => (document.title = "fini's home")} onblur={() => (document.title = "\u200E")} />
-<svelte:body oncontextmenu={(e) => e.preventDefault()} onkeyup={(e) => e.preventDefault()} onkeydown={(e) => e.preventDefault()} />
+<!-- <svelte:body oncontextmenu={(e) => e.preventDefault()} onkeyup={(e) => e.preventDefault()} onkeydown={(e) => e.preventDefault()} /> -->
 
 <audio bind:this={backgroundMusic} bind:paused={musicState.paused} bind:volume={musicState.volume} src="autumnrust.mp3"></audio>
 <Backdrop>
@@ -51,21 +57,22 @@
 			<WelcomeHome bind:canContinue />
 		</Welcome>
 	{:else}
-		{#if !viewProjects}
+		{#if !projectState.viewProjects}
 			<Socials>
 				<Button onclick={() => window.open("https://github.com/xxhertz")}>github</Button>
 				<Button onclick={() => window.open("https://youtube.com/c/hzjumps")}>youtube</Button>
 				<Button onclick={() => window.open("https://discord.gg/pNrZeWcbap")}>discord</Button>
 				<Button onclick={() => window.open("https://twitch.tv/hzjumps")}>twitch</Button>
-				<Button animate={true} onclick={() => (viewProjects = true)}>projects</Button>
+				<Button animate={true} onclick={() => (projectState.viewProjects = true)}>projects</Button>
 			</Socials>
+		{:else if !projectState.currentlyViewing}
+			<Projects bind:viewProjects={projectState.viewProjects}>
+				{#each Object.entries(projects) as [id, project]}
+					<ProjectButton {project} bind:currentlyViewing={projectState.currentlyViewing} />
+				{/each}
+			</Projects>
 		{:else}
-			<Socials>
-				<Button onclick={() => window.open("https://github.com/CMD-X/CMD-X/")}>cmd-x</Button>
-				<Button onclick={() => window.open("https://github.com/xxhertz/imagek_bot")}>imagek</Button>
-				<Button onclick={() => window.open("https://github.com/xxhertz/website-svelte")}>this site</Button>
-				<Button animate={true} onclick={() => (viewProjects = false)}>go back</Button>
-			</Socials>
+			<ViewProject bind:currentlyViewing={projectState.currentlyViewing} />
 		{/if}
 		<BirthdayClock />
 		<Volume bind:musicState />

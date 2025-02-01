@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { explode } from "../lib"
+	import { explode } from "$lib"
 
 	let { children } = $props()
 </script>
